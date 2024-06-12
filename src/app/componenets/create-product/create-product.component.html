@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Add New Product</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()"> 
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" class="form-control" formControlName="productName" />
+                            <div *ngIf="addProductForm.get('productName')?.invalid && (addProductForm.get('productName')?.dirty || addProductForm.get('productName')?.touched)"
+                                class="text-danger">
+                                Product Name is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shortName">Short Name</label>
+                            <input type="text" id="shortName" class="form-control" formControlName="shortName" />
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" class="form-control" formControlName="category" />
+                            <div *ngIf="addProductForm.get('category')?.invalid && (addProductForm.get('category')?.dirty || addProductForm.get('category')?.touched)"
+                                class="text-danger">
+                                Category is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" id="price" class="form-control" formControlName="price" />
+                            <div *ngIf="addProductForm.get('price')?.invalid && (addProductForm.get('price')?.dirty || addProductForm.get('price')?.touched)"
+                                class="text-danger">
+                                Valid price is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnailImageUrl">Thumbnail Image URL</label>
+                            <input type="text" id="thumbnailImageUrl" class="form-control"
+                                formControlName="thumbnailImageUrl" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryTimeSpan">Delivery Time Span</label>
+                            <input type="text" id="deliveryTimeSpan" class="form-control"
+                                formControlName="deliveryTimeSpan" />
+                        </div>
+                        
+                        <button type="submit"   *ngIf="productId === 0"class="btn btn-primary" [disabled]="!addProductForm.valid">Add
+                            Product</button>
+                            <button type="button" (click)="onUpdatet()" *ngIf="productId !== 0" class="btn btn-success" [disabled]="!addProductForm.valid">Update
+                                Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
